@@ -1,0 +1,39 @@
+# Worktrees (gitignored, managed by scripts/worktree.sh)
+worktrees/
+
+# Beads: track the database, exclude runtime files
+.beads/*.lock
+.beads/*.pid
+.beads/*.log
+.beads/*.activity
+.beads/dolt-server.port
+.beads-credential-key
+
+# Dolt database files (added by bd init)
+.dolt/
+*.db
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Editor
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Environment
+.env
+.env.local
+
+# Local TMP
+tmp/
+
+# bv (beads viewer) local config and caches
+.bv/
+
+# Factory local docs cache
+.factory/docs

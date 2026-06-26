@@ -1,0 +1,40 @@
+---
+description: Core orchestration rules for this multi-repo AI workspace (task discipline, branch naming, PRs, response style)
+alwaysApply: true
+---
+
+# Workspace Core Rules
+
+This is a multi-repo orchestration workspace. The full playbook is in `AGENTS.md`; these are the non-negotiables that always apply.
+
+## Repos
+- Managed repos are declared in `workspace.json` and cloned as siblings (`../<repo>`). Read `workspace.json` to discover them.
+- Use `./scripts/worktree.sh <repo> agent/<task-id>-<desc>` for isolated branches. Never work directly on a repo's default branch.
+
+## Task tracking
+- Use Beads (`bd`) when installed; otherwise track work in `TASKS.md`. Check with `command -v bd`.
+- Always claim before starting (`bd update <id> --claim`), always close when done (`bd close <id> --reason ...`).
+- No dangling tasks, no orphan work (every feature/bug/task is a child of an epic).
+- Always pass `--json` to bd commands. Never use `bd edit`.
+
+## Roles
+- `role:architect` — planning/epics (the plan skill, run inline).
+- `role:coder` — implementation (worker skill / Forge).
+- `role:reviewer` — review tasks (reviewer skill / Sentinel).
+
+## Branch naming
+```
+agent/<task-id>-<short-description>
+```
+
+## Pull requests
+- Title follows Conventional Commits; include the ticket key when an issue tracker is used: `<type>: description [<TICKET-KEY>]`.
+- Follow the target repo's PR template verbatim when one exists.
+- Body must include: the spec link on `origin/main` (`https://github.com/<ORG>/<WORKSPACE_REPO>/blob/main/specs/<KEY>.md`), task IDs, and a ticket link if applicable.
+- Push the spec to `origin/main` of this workspace before opening any PR that references it.
+- The reviewer opens PRs after review passes; the worker never opens PRs.
+
+## Response style
+- Don't announce tool calls or narrate intermediate steps; just act.
+- Don't editorialize tool output or echo what the user already saw.
+- Report outcomes (PR URL, task status), not process logs. No closing pleasantries.

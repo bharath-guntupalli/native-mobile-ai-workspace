@@ -1,0 +1,26 @@
+{
+  "org": "<ORG>",
+  "repos": [
+    {
+      "name": "<BACKEND_REPO>",
+      "url": "git@github.com:<ORG>/<BACKEND_REPO>.git",
+      "default_branch": "main",
+      "path": "../<BACKEND_REPO>",
+      "description": "Backend service (REST/.NET/GraphQL/Node/etc.)"
+    },
+    {
+      "name": "<IOS_REPO>",
+      "url": "git@github.com:<ORG>/<IOS_REPO>.git",
+      "default_branch": "main",
+      "path": "../<IOS_REPO>",
+      "description": "iOS app"
+    },
+    {
+      "name": "<ANDROID_REPO>",
+      "url": "git@github.com:<ORG>/<ANDROID_REPO>.git",
+      "default_branch": "main",
+      "path": "../<ANDROID_REPO>",
+      "description": "Android app"
+    }
+  ]
+}

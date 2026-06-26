@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "hooks": {
+    "sessionStart": [
+      {
+        "command": ".cursor/hooks/load-memories.sh"
+      }
+    ],
+    "preCompact": [
+      {
+        "command": ".cursor/hooks/load-memories.sh"
+      }
+    ]
+  }
+}
